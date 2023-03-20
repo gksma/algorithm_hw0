@@ -31,19 +31,31 @@ void add_digits(char aa[N], char bb[N])
 }
 int main()
 {
-    int fibo[1001];
-    int Fn[1001];
-    int i;
-    int n;
-    fibo[0] = 0;
-    fibo[1] = 1;
+    char fibo1[N] = { 0 };
+    char fibo2[N] = { 0 };
+    char old_fibo[N];
+    int i,j;
 
-    for (i = 2; i < 1001; i++)
-    {
-        fibo[i] = fibo[i - 1] + fibo[i - 2];
-    }
+    fibo1[N - 1] = 0;
+    fibo2[N - 1] = 1;
 
-    if()
+    print_digits(fibo1);
+    printf("\n");
+    print_digits(fibo2);
+    printf("\n");
     
 
+    for (i = 2; i < 1000; i++)
+    {
+        add_digits(fibo1, fibo2);
+        print_digits(fibo2);
+        printf("\n");
+
+        for (j = 0; j < N; j++)
+        {
+            old_fibo[j] = fibo1[j];
+            fibo1[j] = fibo2[j];
+            fibo2[j] = old_fibo[j];
+        }
+    } 
 }
